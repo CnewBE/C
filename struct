@@ -1,0 +1,46 @@
+#define _CRT_SECURE_NO_WARNINGS 
+#define MAX 5
+#include<stdio.h>
+
+typedef struct Person {
+	char name[MAX][MAX];
+	int number;
+	int pay;
+	int sum;
+	double ave;
+}P;
+
+//동적할당 하는방법내껄로만들기
+int main(void)
+{
+	P p1[MAX];
+	int i;
+	int totalsum = 0;
+	double totalave = 0;
+	printf("%d명의 사원정보를 입력하세요\n", MAX);
+	for (i = 0; i < MAX; i++)
+	{
+		printf("이름 입력 : ");
+		scanf("%s", p1[i].name);
+		printf("사원번호 입력 : ");
+		scanf("%d", &p1[i].number);
+		printf("급여 입력 : ");
+		scanf("%d", &p1[i].pay);
+		printf("이름은%s 사원번호는 %d 급여는 %d\n", p1[i].name, p1[i].number, p1[i].pay);
+
+		p1[i].sum = p1[i].pay;
+		totalsum += p1[i].sum;
+		p1[i].ave = p1[i].pay / MAX;
+		totalave += p1[i].ave;
+	}
+	printf("\n\n사원이름   사원번호   급여\n\n");
+	for (i = 0; i < MAX; i++)
+	{
+		printf("\n%s %d %d\n", p1[i].name, p1[i].number, p1[i].pay);
+	}
+	printf("\n총급여평균: %lf \n", totalave);
+	printf("\n총급여합계: %d \n", totalsum);
+
+	return 0;
+
+}
